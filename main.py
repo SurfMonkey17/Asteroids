@@ -5,8 +5,10 @@ from asteroid import Asteroid
 from asteroidfield import AsteroidField
 
 def main():
+    
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    
     print("Starting asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
@@ -20,11 +22,12 @@ def main():
     AsteroidField.containers = (updatable,)
 
     player=Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+   
     asteroid_field = AsteroidField()
-
+    
     clock = pygame.time.Clock()
     dt=0
-
+   
     running = True
     while running: 
         for event in pygame.event.get():
@@ -35,6 +38,9 @@ def main():
         for sprite in updatable:
             sprite.update(dt)
 
+        for asteroid in asteroids:
+            player.collision(asteroid)
+
         screen.fill((0,0,0))
         
         for sprite in drawable:
@@ -44,8 +50,8 @@ def main():
         dt = clock.tick(60) / 1000
         
         
-    
+    pygame.quit()
 
 if __name__ == "__main__":
     main()
-    pygame.quit()
+   
