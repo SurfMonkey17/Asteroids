@@ -43,10 +43,17 @@ def main():
 
         for asteroid in asteroids:
             player.collision(asteroid)
+  
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.position.distance_to(shot.position) <= (asteroid.radius + shot.radius):
+                    #asteroid.split()
+                    shot.kill()
+                    
 
-        screen.fill((0,0,0))
+        screen.fill((0,0,0)) 
         
-        for sprite in drawable:
+        for sprite in drawable:  
             sprite.draw(screen)
       
       
