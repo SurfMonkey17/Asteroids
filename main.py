@@ -28,7 +28,7 @@ def main():
    
     asteroid_field = AsteroidField()
     
-    clock = pygame.time.Clock()
+    clock = pygame.time.Clock()  
     dt=0
    
     running = True
@@ -47,14 +47,14 @@ def main():
         for asteroid in asteroids:
             for shot in shots:
                 if asteroid.position.distance_to(shot.position) <= (asteroid.radius + shot.radius):
-                    #asteroid.split()
+                    asteroid.split() 
                     shot.kill()
                     
 
         screen.fill((0,0,0)) 
         
         for sprite in drawable:  
-            sprite.draw(screen)
+            sprite.draw(screen)  
       
       
         pygame.display.flip()
